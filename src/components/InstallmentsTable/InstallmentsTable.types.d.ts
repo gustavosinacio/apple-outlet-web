@@ -1,0 +1,3 @@
+interface InstallmentsTableProps {
+  amountLeft: number;
+}

@@ -1,68 +1,52 @@
+import { useEffect, useState } from "react";
+
+import Logo from "../../assets/icon.png";
 import { Input } from "../../components/Input/Input";
+import { InstallmentsTable } from "../../components/InstallmentsTable/InstallmentsTable";
 import * as S from "./Home.styles";
 
 export function Home() {
+  const [upfront, setUpfront] = useState<number>(6000);
+  const [total, setTotal] = useState<number>(12000);
+  const [amountLeft, setAmountLeft] = useState<number>(0);
+
+  useEffect(() => {
+    setAmountLeft(total - upfront);
+  }, [total, upfront]);
+
   return (
     <S.Container>
-      <h1>Apple Outlet</h1>
+      <header>
+        <img src={Logo} alt="apple-outlet-logo" height={50} />
+        <h1>Apple Outlet</h1>
+      </header>
 
-      <div>
-        <h3>Entrada</h3>
-        <Input alt="upfront" placeholder="Entrada" />
-      </div>
-      <div>
-        <h3>Total da compra</h3>
-        <Input alt="total-value" placeholder="Total da compra" />
-      </div>
+      <main>
+        <div>
+          <S.InputWrapper>
+            <p>Entrada: </p>
+            <span>R$</span>
+            <Input
+              alt="upfront"
+              placeholder="Entrada"
+              value={upfront}
+              onChange={(event) => setUpfront(event.target.value)}
+            />
+          </S.InputWrapper>
+          <S.InputWrapper>
+            <p>Total da compra: </p>
+            <span>R$</span>
+            <Input
+              alt="total-value"
+              placeholder="Total da compra"
+              value={total}
+              onChange={(event) => setTotal(event.target.value)}
+            />
+          </S.InputWrapper>
+        </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Taxa</th>
-            <th>Nº Parcelas</th>
-            <th>Total</th>
-            <th>Parcelas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>11,0</td>
-            <td>10</td>
-            <td>6.741,57</td>
-            <td>674,16</td>
-          </tr>
-          <tr>
-            <td>11,0</td>
-            <td>10</td>
-            <td>6.741,57</td>
-            <td>674,16</td>
-          </tr>
-          <tr>
-            <td>11,0</td>
-            <td>10</td>
-            <td>6.741,57</td>
-            <td>674,16</td>
-          </tr>
-          <tr>
-            <td>11,0</td>
-            <td>10</td>
-            <td>6.741,57</td>
-            <td>674,16</td>
-          </tr>
-          <tr>
-            <td>11,0</td>
-            <td>10</td>
-            <td>6.741,57</td>
-            <td>674,16</td>
-          </tr>
-          <tr>
-            <td>11,0</td>
-            <td>10</td>
-            <td>6.741,57</td>
-            <td>674,16</td>
-          </tr>
-        </tbody>
-      </table>
+        <InstallmentsTable amountLeft={amountLeft} />
+      </main>
     </S.Container>
   );
 }
