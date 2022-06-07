@@ -16,32 +16,45 @@ export default function PDFRenderer({
     <Document>
       <Page size="A4" style={S.container}>
         <View style={S.header}>
+          <View style={S.headerInfoArea}>
+            <View style={S.coloredBackground}>
+              <Text style={S.title}>Calculadora Apple Outlet</Text>
+            </View>
+            <View style={S.paymentTitlesContainer}>
+              <Text style={S.paymentInfo}>VALOR DE ENTRADA</Text>
+              <Text style={S.paymentInfo}>VALOR À VISTA NO PIX</Text>
+              <Text style={S.paymentInfo}>VALOR DO APARELHO</Text>
+            </View>
+
+            <View style={S.paymentValuesContainer}>
+              <Text style={S.paymentValue}>{formatMoney(upfront)}</Text>
+              <Text style={S.paymentValue}>{formatMoney(amountLeft)}</Text>
+              <Text style={S.paymentValue}>{formatMoney(total)}</Text>
+            </View>
+          </View>
           <Image source={Logo} style={S.logo} />
-          <Text style={S.title}>Apple Outlet</Text>
         </View>
-        <View style={S.paymentInfoContainer}>
-          <Text style={S.paymentInfo}>Entrada: {formatMoney(upfront)}</Text>
-          <Text style={S.paymentInfo}>
-            Total da compra: {formatMoney(total)}
-          </Text>
-          <Text style={[S.paymentInfo, S.amountLeft]}>
-            Valor à pagar: {formatMoney(amountLeft)}
-          </Text>
-        </View>
+
         <View style={S.table}>
           <View style={S.thead}>
             <View style={S.tr}>
-              <View style={[S.td, S.th, S.tdDarkBackground]}>
-                <Text>Taxa</Text>
+              <View style={[S.td, S.th]}>
+                <Text>QUANTIDADE DE PARCELAS</Text>
               </View>
               <View style={[S.td, S.th]}>
-                <Text>Total</Text>
-              </View>
-              <View style={[S.td, S.th, S.tdDarkBackground]}>
-                <Text>Nº Parcelas</Text>
+                <Text>TAXA</Text>
               </View>
               <View style={[S.td, S.th]}>
-                <Text>Parcela</Text>
+                <Text>VALOR PARCELADO</Text>
+              </View>
+
+              <View style={[S.td, S.th]}>
+                <Text>PARCELAS</Text>
+              </View>
+              <View
+                style={[S.td, S.th, S.lastColumn, { fontSize: 8, border: 0 }]}
+              >
+                <Text>QUANTIDADE DE PARCELAS</Text>
               </View>
             </View>
           </View>
@@ -53,19 +66,30 @@ export default function PDFRenderer({
             );
 
             return (
-              <View style={S.tr} key={`${numberOfInstallments}-${fee}`}>
-                <View style={[S.td, S.tdDarkBackground]}>
-                  <Text>{fee.toFixed(2).replace(".", ",")}</Text>
-                </View>
-                <View style={S.td}>
-                  <Text>{formatMoney(total)}</Text>
-                </View>
-                <View style={[S.td, S.tdDarkBackground]}>
+              <View
+                style={[S.tr, S.coloredBackground]}
+                key={`${numberOfInstallments}-${fee}`}
+              >
+                <div style={S.td}>
                   <Text>{numberOfInstallments}</Text>
-                </View>
-                <View style={S.td}>
+                </div>
+                <div style={S.td}>
+                  <Text>{fee.toFixed(2).replace(".", ",")}</Text>
+                </div>
+                <div style={S.td}>
+                  <Text>{formatMoney(total)}</Text>
+                </div>
+                <div style={S.td}>
                   <Text>{formatMoney(installment)}</Text>
-                </View>
+                </div>
+                <div
+                  style={{
+                    ...S.td,
+                    ...S.lastColumn,
+                  }}
+                >
+                  <Text>{numberOfInstallments}</Text>
+                </div>
               </View>
             );
           })}

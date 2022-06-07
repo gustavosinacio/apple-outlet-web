@@ -111,8 +111,6 @@ export function Home() {
         {error && <span className="error">{error}</span>}
         {instance.loading && <span className="loading">{"Carregando..."}</span>}
       </div>
-
-      {/* <PDFViewer amountLeft={amountLeft} upfront={upfront} total={total} /> */}
     </S.Container>
   );
 }

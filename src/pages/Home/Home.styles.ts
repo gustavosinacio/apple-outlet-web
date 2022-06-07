@@ -22,25 +22,21 @@ export const Container = styled.div(
 
       table {
         margin-top: 1rem;
-        border: 2px solid ${colors.border};
         width: 100%;
         max-width: 500px;
         border-collapse: collapse;
         text-align: center;
-
-        thead {
-          border-bottom: 2px solid ${colors.border};
-        }
+        border: 1px solid ${colors.border};
 
         th,
         td {
-          padding: ${sizing.padding.smallx} ${sizing.padding.small};
+          padding: ${sizing.padding.small} ${sizing.padding.small};
           border-bottom: 1px solid ${colors.border};
           width: clamp(5%, 15%, 45%);
 
-          :nth-child(odd) {
+          :nth-child(1),
+          :nth-child(2) {
             width: 5%;
-            background: ${colors.backgroundLight};
 
             @media (${breakpoints.medium}) {
               width: 10%;
@@ -49,11 +45,26 @@ export const Container = styled.div(
         }
 
         th {
-          font-weight: ${typography.fontWeight.normal};
+          font-weight: ${typography.fontWeight.bold};
+          font-size: 1rem;
+
+          text-transform: uppercase;
         }
 
         td {
           font-weight: ${typography.fontWeight.normal};
+        }
+
+        thead tr {
+          color: #000;
+        }
+
+        tbody {
+          tr {
+            background: ${colors.primary}ee;
+            color: white;
+            box-shadow: inset 0 -12px 15px #000;
+          }
         }
       }
     }
