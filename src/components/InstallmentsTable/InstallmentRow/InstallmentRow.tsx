@@ -1,5 +1,5 @@
-import { formatMoney } from "../../../utils";
-import { calculateInstallment } from "../../../utils/calculateInstallment";
+import { formatMoney } from "utils";
+import { calculateInstallment } from "utils/calculateInstallment";
 
 export function InstallmentRow({
   amountLeft,

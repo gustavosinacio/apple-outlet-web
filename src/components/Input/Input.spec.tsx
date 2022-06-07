@@ -1,6 +1,6 @@
 import { fireEvent } from "@testing-library/react";
+import { renderWithTheme } from "styledTests/renderWithTheme";
 
-import { renderWithTheme } from "../../styledTests/renderWithTheme";
 import { Input } from "./Input";
 
 describe("Input tests", () => {

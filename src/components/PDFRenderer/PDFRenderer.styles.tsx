@@ -1,6 +1,5 @@
 import { StyleSheet } from "@react-pdf/renderer";
-
-import { theme } from "../../styles/theme";
+import { theme } from "styles/theme";
 
 export const styles = StyleSheet.create({
   container: {

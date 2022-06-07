@@ -1,9 +1,9 @@
 import { Document, Image, Page, Text, View } from "@react-pdf/renderer";
+import Logo from "assets/icon-1.png";
+import { defaultConfig } from "config/initialConfig";
+import { formatMoney } from "utils";
+import { calculateInstallment } from "utils/calculateInstallment";
 
-import Logo from "../../assets/icon-1.png";
-import { defaultConfig } from "../../config/initialConfig";
-import { formatMoney } from "../../utils";
-import { calculateInstallment } from "../../utils/calculateInstallment";
 import { styles as S } from "./PDFRenderer.styles";
 
 export default function PDFRenderer({

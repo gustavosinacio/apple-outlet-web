@@ -1,10 +1,11 @@
 import { usePDF } from "@react-pdf/renderer";
+import Logo from "assets/icon-1.png";
+import { Input } from "components/Input";
+import { InstallmentsTable } from "components/InstallmentsTable/InstallmentsTable";
+import PDFRenderer from "components/PDFRenderer/PDFRenderer";
 import { useEffect, useState } from "react";
+import { formatMoney } from "utils";
 
-import Logo from "../../assets/icon-1.png";
-import { Input } from "../../components/Input/Input";
-import { InstallmentsTable } from "../../components/InstallmentsTable/InstallmentsTable";
-import PDFRenderer from "../../components/PDFRenderer/PDFRenderer";
 import * as S from "./Home.styles";
 
 export function Home() {
@@ -27,19 +28,11 @@ export function Home() {
     }
     setError(undefined);
 
-    fetch(instance.url as RequestInfo)
-      .then((resp) => resp.arrayBuffer())
-      .then((resp) => {
-        // set the blog type to final pdf
-        const file = new Blob([resp], { type: "application/pdf" });
-
-        // process to auto download it
-        const fileURL = URL.createObjectURL(file);
-        const link = document.createElement("a");
-        link.href = fileURL;
-        link.download = `AppleOutlet-${new Date().getTime()}`;
-        link.click();
-      });
+    const fileURL = URL.createObjectURL(instance.blob as Blob);
+    const link = document.createElement("a");
+    link.href = fileURL;
+    link.download = `AppleOutlet-${new Date().getTime()}`;
+    link.click();
   }
 
   useEffect(() => {
@@ -91,6 +84,8 @@ export function Home() {
             />
           </S.InputWrapper>
         </div>
+
+        <h3>Valor à pagar: {formatMoney(amountLeft)}</h3>
 
         <InstallmentsTable amountLeft={amountLeft} />
       </main>

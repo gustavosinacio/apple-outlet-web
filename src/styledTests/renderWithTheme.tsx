@@ -1,8 +1,7 @@
 import { render, RenderOptions } from "@testing-library/react";
 import { ReactElement, ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
-
-import { theme } from "../styles/theme";
+import { theme } from "styles/theme";
 
 type Children = ReactNode | ReactNode[];
 

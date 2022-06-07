@@ -1,4 +1,4 @@
-import { roundToTwo } from "../roundToTwo";
+import { roundToTwo } from "utils/roundToTwo";
 
 export function calculateInstallment(
   amountLeft: number,
