@@ -2,10 +2,11 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div(
   ({ theme: { colors, sizing, typography, breakpoints } }) => css`
-    padding: ${sizing.padding.large};
+    display: inline-block;
+    padding: ${sizing.padding.largex};
 
     > header {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
 
       display: flex;
       align-items: center;
@@ -17,7 +18,9 @@ export const Container = styled.div(
 
     main {
       > h3 {
-        margin-top: 2rem;
+        margin-top: 1rem;
+        text-transform: uppercase;
+        color: black;
       }
 
       table {
@@ -82,7 +85,7 @@ export const Container = styled.div(
 
       button {
         margin-top: 1rem;
-        padding: ${sizing.padding.small} ${sizing.padding.medium};
+        padding: ${sizing.padding.medium} ${sizing.padding.large};
 
         text-decoration: none;
         background: ${colors.background};
@@ -122,7 +125,7 @@ export const InputWrapper = styled.div(
     }
 
     :not(:first-child) {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
   `
 );

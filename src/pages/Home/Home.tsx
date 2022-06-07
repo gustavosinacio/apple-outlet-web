@@ -80,7 +80,6 @@ export function Home() {
             <span>R$</span>
             <Input
               alt="upfront"
-              type="number"
               placeholder="Entrada"
               value={upfront}
               onChange={handleChangeUpfrontValue}
@@ -91,7 +90,6 @@ export function Home() {
             <span>R$</span>
             <Input
               alt="total-value"
-              type="number"
               placeholder="Total"
               value={total}
               onChange={handleChangeTotalValue}

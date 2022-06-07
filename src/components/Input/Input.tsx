@@ -13,7 +13,7 @@ export function Input({
       {...props}
       value={value}
       min="0"
-      type={type}
+      type={type || "number"}
       alt={alt}
       placeholder={placeholder}
       onChange={onChange}

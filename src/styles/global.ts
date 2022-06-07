@@ -19,12 +19,16 @@ export const GlobalStyle = createGlobalStyle(
     html {
       font-size: 81.25%;
 
-      @media (${breakpoints.medium}) {
+      @media (${breakpoints.small}) {
         font-size: 93.75%;
       }
 
-      @media (${breakpoints.large}) {
+      @media (${breakpoints.medium}) {
         font-size: 100%;
+      }
+
+      @media (${breakpoints.large}) {
+        font-size: 106.25%;
       }
     }
 

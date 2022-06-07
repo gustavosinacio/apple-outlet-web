@@ -10,9 +10,10 @@ export const theme = {
   sizing: {
     padding: {
       smallx: "0.2rem",
-      small: "0.5rem",
-      medium: "1rem",
-      large: "1.5rem",
+      small: "0.3rem",
+      medium: "0.5rem",
+      large: "1rem",
+      largex: "1.5rem",
     },
     margin: {
       small: "0.5rem",
@@ -27,8 +28,9 @@ export const theme = {
     },
   },
   breakpoints: {
-    medium: "min-width: 600px",
-    large: "min-width: 1000px",
+    small: "min-width: 370px",
+    medium: "min-width: 678px",
+    large: "min-width: 1300px",
   },
   scrollbar: {
     width: "1rem",
