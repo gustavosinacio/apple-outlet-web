@@ -26,7 +26,7 @@ export const Container = styled.div(
 
       table {
         margin-top: 1rem;
-        border: 1px solid ${colors.border};
+        border: 2px solid ${colors.border};
         width: 100%;
         max-width: 500px;
         border-collapse: collapse;
@@ -38,22 +38,54 @@ export const Container = styled.div(
 
         th,
         td {
-          :nth-child(odd) {
-            background: ${colors.backgroundLight};
-            width: 25%;
-          }
-
+          padding: ${sizing.padding.smallx} ${sizing.padding.small};
           border-bottom: 1px solid ${colors.border};
-          padding: ${sizing.padding.small};
+          width: clamp(5%, 15%, 45%);
+
+          :nth-child(odd) {
+            max-width: 5%;
+            background: ${colors.backgroundLight};
+          }
         }
 
         th {
-          color: ${colors.foregroundLight};
           font-weight: ${typography.fontWeight.normal};
         }
 
         td {
           font-weight: ${typography.fontWeight.normal};
+        }
+      }
+    }
+
+    div {
+      .error {
+        margin-left: 1rem;
+        color: red;
+      }
+
+      .loading {
+        margin-left: 1rem;
+        color: ${colors.foreground};
+      }
+
+      button {
+        margin-top: 1rem;
+        padding: ${sizing.padding.small} ${sizing.padding.medium};
+
+        text-decoration: none;
+        background: ${colors.background};
+        color: ${colors.foreground};
+
+        border: 1px solid ${colors.border};
+        border-radius: 3px;
+
+        font-size: 1rem;
+        font-weight: 600;
+
+        :hover {
+          filter: brightness(1.1);
+          color: black;
         }
       }
     }
@@ -69,7 +101,6 @@ export const InputWrapper = styled.div(
       text-align: end;
       font-weight: bold;
       vertical-align: bottom;
-      /* background: gray; */
     }
 
     > * + * {

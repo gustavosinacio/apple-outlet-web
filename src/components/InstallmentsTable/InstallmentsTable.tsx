@@ -13,7 +13,7 @@ export function InstallmentsTable({ amountLeft }: InstallmentsTableProps) {
             <th>Taxa</th>
             <th>Total</th>
             <th>Nº Parcelas</th>
-            <th>Parcelas</th>
+            <th>Parcela</th>
           </tr>
         </thead>
         <tbody>

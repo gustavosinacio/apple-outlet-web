@@ -14,7 +14,7 @@ export function InstallmentRow({
 
   return (
     <tr>
-      <td>{fee.toFixed(2)}</td>
+      <td>{fee.toFixed(2).replace(".", ",")}</td>
       <td>{formatMoney(total)}</td>
       <td>{numberOfInstallments}</td>
       <td>{formatMoney(installment)}</td>

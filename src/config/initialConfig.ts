@@ -1,6 +1,6 @@
 export const defaultConfig = {
   embededText:
-    "* De 13 a 18 SOMENTE: CAIXA / BB / BRB / C6 / RENNER / CARREFOUR / BTG PCT",
+    "* De 13 a 21 SOMENTE: CAIXA / BB / BRB / C6 / RENNER / CARREFOUR / BTG PCT / NEO BRADESCO",
   installments: [
     {
       numberOfInstallments: 1,

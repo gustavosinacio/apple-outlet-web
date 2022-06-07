@@ -16,6 +16,7 @@ export const theme = {
     },
     margin: {
       small: "0.5rem",
+      medium: "1rem",
     },
   },
   typography: {
