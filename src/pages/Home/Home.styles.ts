@@ -61,7 +61,7 @@ export const Container = styled.div(
 
         tbody {
           tr {
-            background: ${colors.primary}ee;
+            background: ${colors.primary};
             color: white;
             box-shadow: inset 0 -12px 15px #000;
           }
