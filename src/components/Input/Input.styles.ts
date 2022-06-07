@@ -5,7 +5,7 @@ export const Container = styled.input(
     background: transparent;
     color: ${colors.foreground};
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: ${typography.fontWeight.normal};
     width: auto;
     max-width: 100px;
@@ -27,5 +27,12 @@ export const Container = styled.input(
     @media (${breakpoints.medium}) {
       max-width: none;
     }
+
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    -moz-appearance: textfield;
   `
 );

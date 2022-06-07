@@ -1,5 +1,5 @@
 interface PDFRendererProps {
   amountLeft: number;
-  upfront: number;
-  total: number;
+  upfront: number | undefined;
+  total: number | undefined;
 }

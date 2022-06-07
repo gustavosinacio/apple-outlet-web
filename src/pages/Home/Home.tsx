@@ -3,26 +3,30 @@ import Logo from "assets/icon-1.png";
 import { Input } from "components/Input";
 import { InstallmentsTable } from "components/InstallmentsTable/InstallmentsTable";
 import PDFRenderer from "components/PDFRenderer/PDFRenderer";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { formatMoney } from "utils";
 
 import * as S from "./Home.styles";
 
 export function Home() {
-  const [upfront, setUpfront] = useState<number>(0);
-  const [total, setTotal] = useState<number>(0);
-  const [amountLeft, setAmountLeft] = useState<number>(0);
+  const [upfront, setUpfront] = useState<number>();
+  const [total, setTotal] = useState<number>();
+  const [amountLeft, setAmountLeft] = useState<number>();
   const [downloadDisabled, setDownloadDisabled] = useState(false);
   const [error, setError] = useState<string>();
 
   const [instance, updateInstance] = usePDF({
     document: (
-      <PDFRenderer amountLeft={amountLeft} upfront={upfront} total={total} />
+      <PDFRenderer
+        amountLeft={amountLeft || 0}
+        upfront={upfront}
+        total={total}
+      />
     ),
   });
 
   function download() {
-    if (amountLeft === 0) {
+    if (!amountLeft) {
       setError("Valor à pagar não pode ser R$ 0,00");
       return;
     }
@@ -35,8 +39,16 @@ export function Home() {
     link.click();
   }
 
+  function handleChangeUpfrontValue(event: ChangeEvent<HTMLInputElement>) {
+    setUpfront(parseFloat(event.target.value));
+  }
+
+  function handleChangeTotalValue(event: ChangeEvent<HTMLInputElement>) {
+    setTotal(parseFloat(event.target.value));
+  }
+
   useEffect(() => {
-    setAmountLeft(total - upfront);
+    setAmountLeft((total || 0) - (upfront || 0));
   }, [total, upfront]);
 
   useEffect(() => {
@@ -64,30 +76,32 @@ export function Home() {
       <main>
         <div>
           <S.InputWrapper>
-            <p>Entrada: </p>
+            <p>VALOR DE ENTRADA: </p>
             <span>R$</span>
             <Input
               alt="upfront"
+              type="number"
               placeholder="Entrada"
               value={upfront}
-              onChange={(event) => setUpfront(event.target.value)}
+              onChange={handleChangeUpfrontValue}
             />
           </S.InputWrapper>
           <S.InputWrapper>
-            <p>Total da compra: </p>
+            <p>TOTAL DA COMPRA: </p>
             <span>R$</span>
             <Input
               alt="total-value"
-              placeholder="Total da compra"
+              type="number"
+              placeholder="Total"
               value={total}
-              onChange={(event) => setTotal(event.target.value)}
+              onChange={handleChangeTotalValue}
             />
           </S.InputWrapper>
         </div>
 
         <h3>Valor à pagar: {formatMoney(amountLeft)}</h3>
 
-        <InstallmentsTable amountLeft={amountLeft} />
+        <InstallmentsTable amountLeft={amountLeft || 0} />
       </main>
 
       <div>

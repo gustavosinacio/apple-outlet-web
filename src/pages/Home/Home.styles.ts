@@ -1,12 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div(
-  ({ theme: { breakpoints, colors, sizing, typography } }) => css`
-    padding: ${sizing.padding.small};
-
-    @media (${breakpoints.medium}) {
-      padding: ${sizing.padding.large};
-    }
+  ({ theme: { colors, sizing, typography, breakpoints } }) => css`
+    padding: ${sizing.padding.large};
 
     > header {
       margin-bottom: 2rem;
@@ -43,8 +39,12 @@ export const Container = styled.div(
           width: clamp(5%, 15%, 45%);
 
           :nth-child(odd) {
-            max-width: 5%;
+            width: 5%;
             background: ${colors.backgroundLight};
+
+            @media (${breakpoints.medium}) {
+              width: 10%;
+            }
           }
         }
 
@@ -95,12 +95,15 @@ export const Container = styled.div(
 export const InputWrapper = styled.div(
   () => css`
     display: flex;
-    align-self: center;
+    align-items: flex-end;
 
     p {
       text-align: end;
       font-weight: bold;
-      vertical-align: bottom;
+    }
+
+    span {
+      font-size: 1.4rem;
     }
 
     > * + * {

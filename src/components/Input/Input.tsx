@@ -5,13 +5,15 @@ export function Input({
   placeholder,
   onChange,
   value,
+  type,
   ...props
 }: InputProps) {
   return (
     <S.Container
       {...props}
       value={value}
-      type="text"
+      min="0"
+      type={type}
       alt={alt}
       placeholder={placeholder}
       onChange={onChange}

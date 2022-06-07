@@ -1,6 +1,7 @@
 import { Document, Image, Page, Text, View } from "@react-pdf/renderer";
 import Logo from "assets/icon-1.png";
 import { defaultConfig } from "config/initialConfig";
+import React from "react";
 import { formatMoney } from "utils";
 import { calculateInstallment } from "utils/calculateInstallment";
 
@@ -19,10 +20,12 @@ export default function PDFRenderer({
           <Text style={S.title}>Apple Outlet</Text>
         </View>
         <View style={S.paymentInfoContainer}>
-          <Text style={S.paymentInfo}>Entrada: {upfront}</Text>
-          <Text style={S.paymentInfo}>Total da compra: {total}</Text>
+          <Text style={S.paymentInfo}>Entrada: {formatMoney(upfront)}</Text>
+          <Text style={S.paymentInfo}>
+            Total da compra: {formatMoney(total)}
+          </Text>
           <Text style={[S.paymentInfo, S.amountLeft]}>
-            Valor à pagar: {amountLeft}
+            Valor à pagar: {formatMoney(amountLeft)}
           </Text>
         </View>
         <View style={S.table}>

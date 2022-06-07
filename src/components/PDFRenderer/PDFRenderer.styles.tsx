@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
   },
   th: {
-    color: theme.colors.foregroundLight,
+    color: theme.colors.foreground,
     borderTop: 0,
   },
   td: {
@@ -60,6 +60,7 @@ export const styles = StyleSheet.create({
   },
   tdDarkBackground: {
     backgroundColor: theme.colors.backgroundLight,
+    width: "80%",
   },
   embededText: {
     marginTop: 8,
