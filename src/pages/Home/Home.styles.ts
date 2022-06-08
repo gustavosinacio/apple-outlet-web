@@ -4,6 +4,7 @@ export const Container = styled.div(
   ({ theme: { colors, sizing, typography, breakpoints } }) => css`
     display: inline-block;
     padding: ${sizing.padding.largex};
+    max-width: 600px;
 
     > header {
       margin-bottom: 1.5rem;
@@ -17,12 +18,6 @@ export const Container = styled.div(
     }
 
     main {
-      > h3 {
-        margin-top: 1rem;
-        text-transform: uppercase;
-        color: black;
-      }
-
       table {
         margin-top: 1rem;
         width: 100%;
@@ -106,26 +101,43 @@ export const Container = styled.div(
   `
 );
 
-export const InputWrapper = styled.div(
-  () => css`
-    display: flex;
-    align-items: flex-end;
+export const InputsContainer = styled.div(
+  ({ theme: { breakpoints } }) => css`
+    > div {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-column-gap: 1rem;
 
-    p {
-      text-align: end;
-      font-weight: bold;
+      p {
+        font-weight: bold;
+        /* text-align: end; */
+        align-self: flex-end;
+      }
+
+      div {
+        display: flex;
+        flex-direction: row;
+
+        span {
+          font-size: 1.4rem;
+          align-self: flex-end;
+        }
+
+        input {
+          margin-left: 0.5rem;
+          width: 100%;
+        }
+      }
+
+      :not(:first-child) {
+        margin-top: 0.5rem;
+      }
     }
 
-    span {
-      font-size: 1.4rem;
-    }
-
-    > * + * {
-      margin-left: 0.5rem;
-    }
-
-    :not(:first-child) {
-      margin-top: 0.5rem;
+    > h3 {
+      margin-top: 1.5rem;
+      text-transform: uppercase;
+      color: black;
     }
   `
 );

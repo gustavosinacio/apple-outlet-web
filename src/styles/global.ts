@@ -14,6 +14,8 @@ export const GlobalStyle = createGlobalStyle(
       background: ${colors.background};
       color: ${colors.foreground};
       height: 100vh;
+      display: flex;
+      justify-content: center;
     }
 
     html {

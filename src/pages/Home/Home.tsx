@@ -74,30 +74,33 @@ export function Home() {
       </header>
 
       <main>
-        <div>
-          <S.InputWrapper>
-            <p>VALOR DE ENTRADA: </p>
-            <span>R$</span>
-            <Input
-              alt="upfront"
-              placeholder="Entrada"
-              value={upfront}
-              onChange={handleChangeUpfrontValue}
-            />
-          </S.InputWrapper>
-          <S.InputWrapper>
+        <S.InputsContainer>
+          <div>
+            <p>ENTRADA: </p>
+            <div>
+              <span>R$</span>
+              <Input
+                alt="upfront"
+                placeholder="Entrada"
+                value={upfront}
+                onChange={handleChangeUpfrontValue}
+              />
+            </div>
+          </div>
+          <div>
             <p>TOTAL DA COMPRA: </p>
-            <span>R$</span>
-            <Input
-              alt="total-value"
-              placeholder="Total"
-              value={total}
-              onChange={handleChangeTotalValue}
-            />
-          </S.InputWrapper>
-        </div>
-
-        <h3>Valor à pagar: {formatMoney(amountLeft)}</h3>
+            <div>
+              <span>R$</span>
+              <Input
+                alt="total-value"
+                placeholder="Total"
+                value={total}
+                onChange={handleChangeTotalValue}
+              />
+            </div>
+          </div>
+          <h3>Valor à pagar: {formatMoney(amountLeft)}</h3>
+        </S.InputsContainer>
 
         <InstallmentsTable amountLeft={amountLeft || 0} />
       </main>
