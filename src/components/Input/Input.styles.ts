@@ -7,8 +7,6 @@ export const Container = styled.input(
 
     font-size: 1.4rem;
     font-weight: ${typography.fontWeight.normal};
-    width: auto;
-    max-width: 100px;
 
     border: 0;
     border-radius: 0;

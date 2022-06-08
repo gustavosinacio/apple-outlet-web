@@ -4,7 +4,7 @@ export const Container = styled.div(
   ({ theme: { colors, sizing, typography, breakpoints } }) => css`
     display: inline-block;
     padding: ${sizing.padding.largex};
-    max-width: 600px;
+    width: 100%;
 
     > header {
       margin-bottom: 1.5rem;
@@ -21,7 +21,6 @@ export const Container = styled.div(
       table {
         margin-top: 1rem;
         width: 100%;
-        max-width: 500px;
         border-collapse: collapse;
         text-align: center;
         border: 1px solid ${colors.border};
