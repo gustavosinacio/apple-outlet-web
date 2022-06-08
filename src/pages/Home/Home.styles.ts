@@ -42,7 +42,7 @@ export const Container = styled.div(
             width: 5%;
 
             @media (${breakpoints.medium}) {
-              width: 10%;
+              width: 25%;
             }
           }
         }
