@@ -30,8 +30,7 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix ./src/**/*",
-    "deploy:mac": "yarn build && firebase deploy",
-    "deploy:windows": "yarn build; firebase deploy"
+    "deploy": "yarn build & firebase deploy"
   },
   "eslintConfig": {
     "extends": [
