@@ -39,6 +39,15 @@ export const GlobalStyle = createGlobalStyle(
       font-weight: ${typography.fontWeight.normal};
     }
 
+    input {
+      caret-color: ${colors.primary};
+
+      ::selection {
+        background: ${colors.primary};
+        color: white;
+      }
+    }
+
     ::-webkit-scrollbar {
       width: ${scrollbar.width};
     }
