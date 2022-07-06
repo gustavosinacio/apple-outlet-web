@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Container = styled.div(
   ({ theme: { colors, sizing, typography, breakpoints } }) => css`
     display: inline-block;
-    padding: ${sizing.padding.medium};
+    padding: ${sizing.padding.largex};
     width: 100%;
 
     > header {
