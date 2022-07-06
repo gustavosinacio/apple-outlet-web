@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Container = styled.div(
   ({ theme: { colors, sizing, typography, breakpoints } }) => css`
     display: inline-block;
-    padding: ${sizing.padding.largex};
+    padding: ${sizing.padding.medium};
     width: 100%;
 
     > header {
@@ -70,6 +70,7 @@ export const Container = styled.div(
       .error {
         margin-left: 1rem;
         color: red;
+        font-size: 0.8rem;
       }
 
       .loading {
@@ -101,35 +102,28 @@ export const Container = styled.div(
 );
 
 export const InputsContainer = styled.div(
-  ({ theme: { breakpoints } }) => css`
-    > div {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      grid-column-gap: 1rem;
+  () => css`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+
+    p {
+      font-weight: bold;
+      font-size: 1.3rem;
+      align-self: flex-end;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
 
       p {
-        font-weight: bold;
-        /* text-align: end; */
-        align-self: flex-end;
-      }
-
-      div {
-        display: flex;
-        flex-direction: row;
-
-        span {
-          font-size: 1.4rem;
-          align-self: flex-end;
-        }
-
-        input {
-          margin-left: 0.5rem;
-          width: 100%;
-        }
-      }
-
-      :not(:first-child) {
-        margin-top: 0.5rem;
+        font-size: 1rem;
       }
     }
 

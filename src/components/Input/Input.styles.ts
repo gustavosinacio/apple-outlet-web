@@ -5,7 +5,7 @@ export const Container = styled.input(
     background: transparent;
     color: ${colors.foreground};
 
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: ${typography.fontWeight.normal};
 
     border: 0;
@@ -23,7 +23,7 @@ export const Container = styled.input(
     }
 
     @media (${breakpoints.medium}) {
-      max-width: none;
+      /* max-width: none; */
     }
 
     ::-webkit-outer-spin-button,
