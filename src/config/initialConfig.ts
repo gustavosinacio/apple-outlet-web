@@ -1,6 +1,8 @@
 export const defaultConfig = {
-  embededText:
-    "* De 13 a 21 SOMENTE: CAIXA / BB / BRB / C6 / RENNER / CARREFOUR / BTG PCT / NEO BRADESCO",
+  embededText: `
+    * De 13 a 21 SOMENTE: CAIXA / BB / BRB / C6 / RENNER / CARREFOUR / BTG PCT / NEO BRADESCO
+    * Os valores divulgados e informados tem vigência somente para dia solicitado, podendo ser alterados a qualquer momento.
+    `,
   installments: [
     {
       numberOfInstallments: 1,

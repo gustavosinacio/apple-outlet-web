@@ -15,6 +15,9 @@ export function Home() {
   const [downloadDisabled, setDownloadDisabled] = useState(false);
   const [error, setError] = useState<string>();
 
+  const [awaitUpdate, setAwaitUpdate] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
   const [instance, updateInstance] = usePDF({
     document: (
       <PDFRenderer
@@ -53,9 +56,29 @@ export function Home() {
     []
   );
 
+  const setDelayTrigger = useCallback(
+    (callback: (...args: any[]) => void, args: any[]) => {
+      if (timeoutId) clearTimeout(timeoutId);
+      setAwaitUpdate(true);
+
+      callback(args);
+
+      setTimeoutId(
+        setTimeout(() => {
+          setAwaitUpdate(false);
+        }, 700)
+      );
+    },
+    [timeoutId]
+  );
+
   useEffect(() => {
-    setAmountLeft((total || 0) - (upfront || 0));
-  }, [total, upfront]);
+    if (!awaitUpdate) {
+      const calculatedAmount = (total || 0) - (upfront || 0);
+      if (calculatedAmount > 0) setAmountLeft(calculatedAmount);
+      else setAmountLeft(0);
+    }
+  }, [awaitUpdate, total, upfront]);
 
   useEffect(() => {
     updateInstance();
@@ -97,7 +120,9 @@ export function Home() {
             alt="upfront"
             placeholder="Entrada"
             value={upfront}
-            onChange={handleChangeUpfrontValue}
+            onChange={(event) =>
+              setDelayTrigger(handleChangeUpfrontValue, event)
+            }
           />
 
           <p>{formatMoney(amountLeft)}</p>
@@ -106,7 +131,7 @@ export function Home() {
             alt="total-value"
             placeholder="Total"
             value={total}
-            onChange={handleChangeTotalValue}
+            onChange={(event) => setDelayTrigger(handleChangeTotalValue, event)}
           />
         </S.InputsContainer>
 
@@ -115,7 +140,7 @@ export function Home() {
             Download PDF
           </button>
           {error && <span className="error">{error}</span>}
-          {instance.loading && (
+          {instance.loading && !awaitUpdate && (
             <span className="loading">{"Carregando..."}</span>
           )}
         </div>

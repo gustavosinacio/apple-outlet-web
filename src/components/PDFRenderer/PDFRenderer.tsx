@@ -1,7 +1,6 @@
 import { Document, Image, Page, Text, View } from "@react-pdf/renderer";
 import Logo from "assets/icon-1.png";
 import { defaultConfig } from "config/initialConfig";
-import React from "react";
 import { formatMoney } from "utils";
 import { calculateInstallment } from "utils/calculateInstallment";
 
@@ -12,6 +11,10 @@ export default function PDFRenderer({
   upfront,
   total,
 }: PDFRendererProps) {
+  const date = Intl.DateTimeFormat("pt-BR", { dateStyle: "full" }).format(
+    new Date()
+  );
+
   return (
     <Document>
       <Page size="A4" style={S.container}>
@@ -95,6 +98,9 @@ export default function PDFRenderer({
           })}
         </View>
         <Text style={S.embededText}>{defaultConfig.embededText}</Text>
+        <Text style={S.embededText}>
+          {date[0].toUpperCase() + date.slice(1)}
+        </Text>
       </Page>
     </Document>
   );
