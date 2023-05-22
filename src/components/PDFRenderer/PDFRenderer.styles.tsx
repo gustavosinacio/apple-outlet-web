@@ -94,8 +94,19 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     color: "#000",
   },
-  embededText: {
-    marginTop: 30,
+  textsContainer: {
+    marginTop: 20,
+    flex: 1,
+    alignSelf: "flex-start",
+  },
+  embededTexts: {
+    marginTop: 8,
+    fontSize: 8,
+    color: theme.colors.foreground,
+    alignSelf: "flex-start",
+    paddingLeft: 8,
+  },
+  dateText: {
     fontSize: 8,
     color: theme.colors.foreground,
     alignSelf: "flex-start",

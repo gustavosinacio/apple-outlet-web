@@ -1,8 +1,11 @@
 import { Document, Image, Page, Text, View } from "@react-pdf/renderer";
 import Logo from "assets/icon-1.png";
-import { defaultConfig } from "config/initialConfig";
+import { useEffect, useState } from "react";
+import { IInstallment } from "types/installments";
 import { formatMoney } from "utils";
 import { calculateInstallment } from "utils/calculateInstallment";
+import { firestore } from "utils/firebase/firestore";
+import { getVersionSnapshot } from "utils/firebase/getFeeData";
 
 import { styles as S } from "./PDFRenderer.styles";
 
@@ -14,6 +17,18 @@ export default function PDFRenderer({
   const date = Intl.DateTimeFormat("pt-BR", { dateStyle: "full" }).format(
     new Date()
   );
+
+  const [installments, setInstallments] = useState<IInstallment[]>([]);
+  const [embededTexts, setEmbededTexts] = useState<string[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const fetchedData = await getVersionSnapshot(firestore);
+
+      setInstallments(fetchedData.fees);
+      setEmbededTexts(fetchedData.embededTexts);
+    })();
+  }, []);
 
   return (
     <Document>
@@ -61,7 +76,7 @@ export default function PDFRenderer({
               </View>
             </View>
           </View>
-          {defaultConfig.installments.map(({ fee, numberOfInstallments }) => {
+          {installments.map(({ fee, numberOfInstallments }) => {
             const { total, installment } = calculateInstallment(
               amountLeft,
               numberOfInstallments,
@@ -97,10 +112,12 @@ export default function PDFRenderer({
             );
           })}
         </View>
-        <Text style={S.embededText}>{defaultConfig.embededText}</Text>
-        <Text style={S.embededText}>
-          {date[0].toUpperCase() + date.slice(1)}
-        </Text>
+        <View style={S.textsContainer}>
+          {embededTexts.map((embededText) => (
+            <Text style={S.embededTexts}>{embededText}</Text>
+          ))}
+        </View>
+        <Text style={S.dateText}>{date[0].toUpperCase() + date.slice(1)}</Text>
       </Page>
     </Document>
   );

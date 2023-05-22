@@ -1,6 +1,8 @@
+import "firebase/firestore";
+
+import { Home } from "pages/Home";
 import { ThemeProvider } from "styled-components";
 
-import { Home } from "./pages/Home/Home";
 import { GlobalStyle } from "./styles/global";
 import { theme } from "./styles/theme";
 
