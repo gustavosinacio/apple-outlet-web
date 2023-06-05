@@ -1,10 +1,10 @@
 import { Document, Image, Page, Text, View } from "@react-pdf/renderer";
-import Logo from "assets/icon-1.png";
+import Logo from "assets/logo.png";
 import { useEffect, useState } from "react";
 import { IInstallment } from "types/installments";
 import { formatMoney } from "utils";
 import { calculateInstallment } from "utils/calculateInstallment";
-import { firestore } from "utils/firebase/firestore";
+import { firestore } from "utils/firebase";
 import { getVersionSnapshot } from "utils/firebase/getFeeData";
 
 import { styles as S } from "./PDFRenderer.styles";
@@ -113,8 +113,10 @@ export default function PDFRenderer({
           })}
         </View>
         <View style={S.textsContainer}>
-          {embededTexts.map((embededText) => (
-            <Text style={S.embededTexts}>{embededText}</Text>
+          {embededTexts.map((embededText, index) => (
+            <Text key={index} style={S.embededTexts}>
+              {embededText}
+            </Text>
           ))}
         </View>
         <Text style={S.dateText}>{date[0].toUpperCase() + date.slice(1)}</Text>

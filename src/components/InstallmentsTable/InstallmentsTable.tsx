@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { IInstallment } from "types/installments";
-// import { createTable } from "utils/firebase/createFeeTable";
-import { firestore } from "utils/firebase/firestore";
+import { firestore } from "utils/firebase";
 import { getVersionSnapshot } from "utils/firebase/getFeeData";
 
 import { InstallmentRow } from "./InstallmentRow/InstallmentRow";
@@ -13,7 +12,6 @@ export function InstallmentsTable({ amountLeft }: InstallmentsTableProps) {
     (async () => {
       const fetchedData = await getVersionSnapshot(firestore);
 
-      console.log(9821, fetchedData);
       setInstallments(fetchedData.fees);
     })();
   }, []);

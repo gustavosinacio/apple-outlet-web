@@ -1,5 +1,5 @@
 import { usePDF } from "@react-pdf/renderer";
-import Logo from "assets/icon-1.png";
+import Logo from "assets/logo.png";
 import { Input } from "components/Input";
 import { InstallmentsTable } from "components/InstallmentsTable/InstallmentsTable";
 import PDFRenderer from "components/PDFRenderer/PDFRenderer";
